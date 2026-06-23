@@ -1,0 +1,108 @@
+body{
+    background-color: rgb(128, 240, 180);
+    text-align: center;
+    font-family:Arial;
+    background-image: url(fondocars.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+h1{
+    color:white;
+}
+
+h2{
+  color: white;
+}
+
+p{
+    color:white;
+    font-size: 20px;
+}
+
+nav{
+    background-color: black;
+    padding: 10px;
+    border: 2px solid bisque;
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin: 10px;
+}
+
+table{
+    margin: auto;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+th{
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+td{
+    padding: 10p;
+    background-color: gray;
+    color: white;
+}
+
+.tarjeta{
+    background-color: gray;
+    text-align: center;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+table td, th{
+    border: 1px solid black;
+}
+
+ul, ol{
+    display: inline-block;
+    text-align: left;
+    color: white;
+}
+
+img{
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+form{
+    background-color: gray;
+    padding: 20px;
+    width: 300px;
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+input, textarea{
+    width: 90%;
+    padding: 5px;
+}
+
+button{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border: none;
+}
+
+footer{
+    margin-top: 20px;
+    background-color: black;
+    padding: 10px;
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CarsWorld</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+
+<div style="text-align: center;">
+
+<h1 style="color: white;"> 
+    Todo sobre Autos
+</h1>
+
+<p style="color: white;">
+    El Mundo de los autos, un placer por la velocidad.
+</p>
+
+<hr>
+
+<h2 style="color: white"> Algunos autos que me gustan: </h2>
+
+<table style="background-color: lightgoldenrodyellow; margin:auto">
+    <tr>
+        <th>Marca</th>
+        <th>Cilindrada</th>
+        <th>Transimision</th>
+        <th>Consumo</th>
+        <th>Pais de Fabricacion</th>
+    </tr>
+
+    <tr>
+        <td>Subaru Impreza</td>
+        <td>1.8//2.0//2.5 litros </td>
+        <td>Automatica y Manual Caja 6</td>
+        <td>10.3 y 11.0 L/100 km</td>
+        <td>Japon</td>
+
+    <tr>
+
+    <tr>
+        <td>Land Rover Defender</td>
+        <td>2.0 hasta 5.0 litros</td>
+        <td>Automática de 8 velocidades caja ZF</td>
+        <td>3.1 Y 16 L/100km</td>
+        <td>Reino Unido</td>
+    </tr>
+
+    <tr>
+        <td>BMW M4</td>
+        <td>3.0</td>
+        <td>Transimision Automatica 6 velocidades</td>
+        <td>10.1 y 10.5 L/100 km</td>
+        <td>Alemania</td>
+    </tr>
+</table>
+
+ <hr>
+
+<h2>Mi auto favorito</h2>
+<img src="Subaru_WRX_STI_-_Blue.jpg"
+alt="Subaru"
+width="400">
+
+
+<hr>
+
+<h2 style="color: white;">Servicios necesarios para mantener un funcionamiento correcto</h2>
+
+<ul style="list-style-position: inside;">
+    <li>Cambio de aceite ya sea por tiempo o km, lo que se cumpla primero</li>
+    <li>Mantenimiento cada 10 000km segun la agencia y marca del vehiculo</li>
+    <li>Rotacion de las llantas cada 10 000km</li>
+    <li>Cambio de aceite de caja cada 4 años o 80 000mil km lo que se cumpla primero</li>
+</ul>
+
+<h2>Marcas y modelos mas conocidos en Costa Rica</h2>
+
+<ol style="list-style-position: inside;">
+    <li>Toyota</li>
+    <li>Hyunday</li>
+    <li>Suzuki</li>
+</ol>
+
+<div class="tarjeta">
+    <h2>Mis redes sociales</h2>
+    <a href="https://www.facebook.com/subaru.costarica.cr?locale=ps_AF" style="color: white;" target="_blank"> Facebook </a>
+    <br>
+    <a href="https://www.instagram.com/subaru.costarica.cr/" style="color: white;" target="_blank"> Instagram</a>
+
+</div>
+
+<h2>Horario de Agencias</h2>
+
+<table style="margin: auto;">
+    <tr>
+        <th>Dia</th>
+        <th>Horarios</th>
+    </tr>
+
+    <tr>
+      <td>Lunes</td>
+     <td>7:30am a 5:30pm</td>
+</tr>
+
+<tr>
+    <td>Martes</td>
+    <td>7:30am a 5:30pm</td>
+</tr>
+
+<tr>
+    <td>Miercoles</td>
+    <td>7:30am a 5:30pm</td>
+</tr>
+
+<tr>
+    <td>Jueves</td>
+    <td>7:30am a 5:30pm</td>
+</tr>
+<tr>
+    <td>Viernes</td>
+    <td>7:30am a 5:30pm</td>
+</tr>
+<tr>
+    <td>Sabados</td>
+    <td>8:00am a 1:00pm</td>
+</tr>
+</table>
+
+<hr>
+
+<h2>Paginas Mundiales de algunas marcas antes nombradas de autos:</h2>
+
+<a href="https://www.subaru.com/" style="color: white;">
+    Subaru
+</a>
+<br><br>
+<a href="https://www.bmw.co.cr/" style="color: white;">
+    BMW
+</a>
+<br><br>
+<a href="https://www.landrover.com/market-selector/index.html" style="color: white;">
+    Land Rover
+</a>
+
+<h2>Video sobre Land Rover Defender</h2>
+
+<video width="560" height="315" controls autoplay muted loop>
+    <source src="Videogeneral.mp4" type="video/mp4">
+</video>
+    
+<h2>Formulario de conctacto para sacar cita en alguna de la agencias:</h2>
+
+<form>
+    Nombre:
+    <input type="text">
+
+    <br><br>
+
+    Correo:
+    <input type="email">
+
+    <br><br>
+
+    Telefono:
+    <input type="text">
+
+    <br><br>
+    
+    Marca de Vehiculo:
+    <input type="text">
+
+    <br><br>
+
+    <label>Provincia donde ser atendido:</label>
+
+<select>
+    <option>San Jose</option>
+    <option>Alajuela</option>
+    <option>Cartago</option>
+    <option>Heredia</option>
+    <option>Guanacaste</option>
+    <option>Puntarenas</option>
+    <option>Limon</option>
+</select>
+
+    <br><br>
+
+    Mensaje
+    <br>
+    <textarea rows="4" cols="30"></textarea>
+
+    <br><br>
+
+    <button>Enviar</button>
+</form>
+
+  <hr>
+
+  <footer>
+    <p style="color: red"></p>
+
+    <p>© <span id="anio"></span> Mi primera pagina Web </p>
+  </footer>
+  <script>
+    document.getElementById("anio").innerHTML = new Date().getFullYear();
+  </script>
+</body>
+</html>
