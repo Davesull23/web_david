@@ -5,301 +5,187 @@
     <meta charset="UTF-8">
     <title>Compras</title>
     <link rel="stylesheet" href="Style.css">
-    <link rel="stylesheet" href="stylecompras.css">
 </head>
 
 <body>
-    <nav>
-        <a href="index.html">Pagina Principal</a>
-        <a href="formulario.html">Formulario para Agendar Cita</a>
-        <a href="repuestos.html">Repuestos en Bodega</a>
-    </nav>
 
+<div class="contenedor">
 
-    <div class="contenedor">
+    <h1>Compra de Repuestos</h1>
 
-        <h1>Compra de Repuestos</h1>
+    <h2>Productos Disponibles</h2>
 
-        <h2>Productos Disponibles</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Repuesto</th>
+                <th>Precio</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
 
-        <table>
+        <tbody>
 
-            <thead>
+            <tr>
+                <td>Pastillas de Freno Delanteras</td>
+                <td>$85</td>
+                <td>
+                    <button class="agregar"
+                        onclick="agregarProducto('Pastillas de Freno Delanteras',85)">
+                        Agregar
+                    </button>
+                </td>
+            </tr>
 
-                <tr>
+            <tr>
+                <td>Llantas AT/TT</td>
+                <td>$50</td>
+                <td>
+                    <button class="agregar"
+                        onclick="agregarProducto('Llantas AT/TT',50)">
+                        Agregar
+                    </button>
+                </td>
+            </tr>
 
-                    <th>Repuesto</th>
-                    <th>Precio</th>
-                    <th>Acción</th>
+            <tr>
+                <td>Filtro de Aceite Sintético</td>
+                <td>$25</td>
+                <td>
+                    <button class="agregar"
+                        onclick="agregarProducto('Filtro de Aceite Sintético',25)">
+                        Agregar
+                    </button>
+                </td>
+            </tr>
 
-                </tr>
+            <tr>
+                <td>Amortiguadores Traseros</td>
+                <td>$150</td>
+                <td>
+                    <button class="agregar"
+                        onclick="agregarProducto('Amortiguadores Traseros',150)">
+                        Agregar
+                    </button>
+                </td>
+            </tr>
 
-            </thead>
+        </tbody>
+    </table>
 
-            <tbody>
+    <h2>Carrito</h2>
 
-                <tr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
 
-                    <td>Pastillas de Freno Delanteras</td>
-                    <td>$85</td>
+        <tbody id="carrito"></tbody>
 
-                    <td>
+    </table>
 
-                        <button class="agregar" onclick="agregarProducto(
-'Pastillas de Freno Delanteras',
-85
-)">
-                            Agregar
-                        </button>
-
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Llantas AT/TT</td>
-                    <td>$50</td>
-
-                    <td>
-
-                        <button class="agregar" onclick="agregarProducto(
-'Llantas AT/TT',
-50
-)">
-                            Agregar
-                        </button>
-
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Filtro de Aceite Sintético</td>
-                    <td>$25</td>
-
-                    <td>
-
-                        <button class="agregar" onclick="agregarProducto(
-'Filtro de Aceite Sintético',
-25
-)">
-                            Agregar
-                        </button>
-
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Amortiguadores Traseros</td>
-                    <td>$150</td>
-
-                    <td>
-
-                        <button class="agregar" onclick="agregarProducto(
-'Amortiguadores Traseros',
-150
-)">
-                            Agregar
-                        </button>
-
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-
-        <h2>Carrito</h2>
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>Producto</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Subtotal</th>
-                    <th>Eliminar</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody id="carrito">
-
-            </tbody>
-
-        </table>
-
-
-        <div class="total">
-
-            Total:
-            $<span id="total">0</span>
-
-        </div>
-
-        <button class="comprar">
-
-            Finalizar Compra
-
-        </button>
-
+    <div class="total">
+        Total: $<span id="total">0</span>
     </div>
 
+    <button class="comprar">
+        Finalizar Compra
+    </button>
 
+</div>
 
-    <script>
+<script>
 
-        let carrito = [];
+let carrito = [];
 
+function agregarProducto(nombre, precio){
 
-        function agregarProducto(nombre, precio) {
+    let existe = carrito.find(
+        item => item.nombre === nombre
+    );
 
-            let existe =
-                carrito.find(
-                    item => item.nombre === nombre
-                );
+    if(existe){
+        existe.cantidad++;
+    } else {
 
+        carrito.push({
+            nombre: nombre,
+            precio: precio,
+            cantidad: 1
+        });
 
-            if (existe) {
+    }
 
-                existe.cantidad++;
+    actualizarCarrito();
+}
 
-            }
-            else {
+function actualizarCarrito(){
 
-                carrito.push({
+    let tabla = document.getElementById("carrito");
 
-                    nombre: nombre,
-                    precio: precio,
-                    cantidad: 1
+    tabla.innerHTML = "";
 
-                });
+    let total = 0;
 
-            }
+    carrito.forEach((item,index)=>{
 
-            actualizarCarrito();
+        let subtotal = item.precio * item.cantidad;
 
-        }
+        total += subtotal;
 
+        tabla.innerHTML += `
 
-        function actualizarCarrito() {
+        <tr>
+            <td>${item.nombre}</td>
+            <td>$${item.precio}</td>
 
-            let tabla =
-                document.getElementById(
-                    "carrito"
-                );
+            <td>
+                <input
+                    type="number"
+                    min="1"
+                    value="${item.cantidad}"
+                    onchange="cambiarCantidad(${index},this.value)">
+            </td>
 
-            tabla.innerHTML = "";
+            <td>$${subtotal}</td>
 
-            let total = 0;
+            <td>
+                <button onclick="eliminarProducto(${index})">
+                    X
+                </button>
+            </td>
 
+        </tr>
 
-            carrito.forEach((item, index) => {
+        `;
+    });
 
-                let subtotal =
-                    item.precio *
-                    item.cantidad;
+    document.getElementById("total").innerText = total;
+}
 
-                total += subtotal;
+function cambiarCantidad(index,cantidad){
 
+    carrito[index].cantidad = parseInt(cantidad);
 
-                tabla.innerHTML += `
+    actualizarCarrito();
 
-<tr>
+}
 
-<td>${item.nombre}</td>
+function eliminarProducto(index){
 
-<td>$${item.precio}</td>
+    carrito.splice(index,1);
 
-<td>
+    actualizarCarrito();
 
-<input
-type="number"
-value="${item.cantidad}"
-min="1"
+}
 
-onchange="
-cambiarCantidad(
-${index},
-this.value
-)
-">
-
-</td>
-
-<td>$${subtotal}</td>
-
-<td>
-
-<button
-class="eliminar"
-
-onclick="
-eliminarProducto(
-${index}
-)
-">
-
-X
-
-</button>
-
-</td>
-
-</tr>
-
-`;
-
-            });
-
-
-            document.getElementById(
-                "total"
-            ).innerText = total;
-
-        }
-
-
-
-        function cambiarCantidad(
-            index,
-            cantidad
-        ) {
-
-            carrito[index].cantidad =
-                parseInt(cantidad);
-
-            actualizarCarrito();
-
-        }
-
-
-
-        function eliminarProducto(
-            index
-        ) {
-
-            carrito.splice(
-                index,
-                1
-            );
-
-            actualizarCarrito();
-
-        }
-
-    </script>
+</script>
 
 </body>
-
 </html>
