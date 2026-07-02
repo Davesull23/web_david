@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">Pagina Principal</a>
+        <a href="formulario.html">Formulario</a>
+        <a href="repuestos.html">Repuestos</a>
+    </nav>
+
+    <h1>Formulario para agendar Citas</h1>
+
+    <form>
+        <label>Nombre</label>
+        <input type="text">
+
+        <br><br>
+
+        <label>Correo</label>
+        <input type="email">
+
+        <br><br>
+
+        <label>Telefono</label>
+        <input type="number">
+
+        <br><br>
+
+        <label>Fecha de Cita</label>
+        <input type="date">
+
+        <br><br>
+
+         <label>Agencia donde desea ser atendido</label>
+        <select>
+            <option>San Jose</option>
+            <option>Alajuela</option>
+            <option>Cartago</option>
+            <option>Heredia</option>
+            <option>Guanacaste</option>
+            <option>Puntarenas</option>
+            <option>Limon</option>
+        </select>
+        <br><br>
+        <label>Mensaje</label>
+        <br>
+        <textarea rows="6"></textarea>
+        <br><br>
+        <button>Enviar</button>
+    </form>
+    <br><br><br><br><br><br>
+    <footer>
+    <p style="color: red"></p>
+    <p>© <span id="anio"></span> CarsWorld </p>
+  </footer>
+  <script>
+    document.getElementById("anio").innerHTML = new Date().getFullYear();
+  </script>
+</html>
+</body>

@@ -1,0 +1,360 @@
+<meta charset="UTF-8">
+<title>Repuestos</title>
+
+<link rel="stylesheet" href="Style.css">
+<link rel="stylesheet" href="style_tabla_respuesto.css">
+
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">Pagina Principal</a>
+    <a href="formulario.html">Formulario para Agendar Cita</a>
+</nav>
+
+<div class="buscador-repuestos">
+    <h2>Encuentre su repuesto</h2>
+    <form class="formulario-busqueda">
+
+<div class="grupo-input">
+    <label for="vehiculo">Vehículo</label>
+<select id="vehiculo">
+        <option value="">Todos</option>
+        <option value="subaru">Subaru</option>
+        <option value="toyota">Toyota</option>
+        <option value="bmw">BMW</option>
+        <option value="land rover">Land Rover</option>
+</select>
+</div>
+
+<br>
+<div class="grupo-input">
+    <label for="categoria">Categoría</label>
+<select id="categoria">
+    <option value="">Todas</option>
+    <option value="motor">Motor</option>
+    <option value="frenos">Frenos</option>
+    <option value="suspension">Suspensión</option>
+    <option value="filtro">Filtro y Aceites</option>
+    <option value="turbo">Turbo</option>
+    <option value="llantas">Llantas</option>
+</select>
+
+</div>
+<br>
+<div class="grupo-input">
+<label for="busqueda-texto">¿Qué repuesto necesitas adquirir?</label>
+<br><br>
+<input
+type="text" id="busqueda-texto" placeholder="Pastillas, Turbo, Aceite...">
+</div>
+
+<br>
+
+<button
+type="button"
+class="btn-buscar"
+id="btn-ejecutar-busqueda">
+
+Buscar Repuestos
+
+</button>
+
+</form>
+
+</div>
+
+
+<div class="contenedor-bodega">
+
+<div class="encabezado-resultados">
+
+<h2>Resultados en Bodega</h2>
+
+<!--<span class="contador-productos">3 repuestos encontrados</span> -->
+
+</div>
+
+
+<div class="tabla-responsiva">
+
+<table class="tabla-bodega">
+
+<thead>
+
+<tr>
+<th>Código</th>
+<th>Repuesto</th>
+<th>Vehículo</th>
+<th>Ubicación</th>
+<th>Stock</th>
+<th>Acción</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>#REP-7741</td>
+
+<td>
+<div class="celda-repuesto">
+<strong>Pastillas de Freno Delanteras</strong>
+<span>Marca: Bosch Original</span>
+</div>
+</td>
+
+<td>Toyota Hilux</td>
+
+<td>Pasillo A - Estante 4</td>
+
+<td>14 unidades</td>
+<td>
+<button class="btn-solicitar">Solicitar Pieza</button>
+</td>
+
+</tr>
+
+<tr>
+
+<td>#REP-3022</td>
+<td>
+<div class="celda-repuesto">
+<strong>Filtro de Aceite Sintético</strong>
+<span>Marca: Fram Ultra</span>
+</div>
+</td>
+<td>Land Rover Defender</td>
+<td>Pasillo B - Estante 1</td>
+<td>28 unidades</td>
+<td><button class="btn-solicitar">Solicitar Pieza</button></td>
+
+<tr>
+</tr>
+<tr>
+<td>#REP-4052</td>
+<td>
+    <div class="celda-repuesto">
+        <strong>Llantas AT-TT</strong>
+        <span>Marca:Bridgestone -- Firestone -- GoodYear</span>
+    </div>
+</td>
+<td>Toyota -- Subaru -- BMW -- Land Rover</td>
+<td>Bodega 2</td>
+<td>400 unidades</td>
+<td>
+<button class="btn-solicitar">Solicitar Pieza</button>
+</td>
+
+</tr>
+<tr>
+<td>#REP-2390</td>
+<td>
+<div class="celda-repuesto">
+<strong>Amortiguadores Traseros</strong>
+<span>Marca: KYB</span>
+</div>
+</td>
+
+<td>Subaru Impreza STI</td>
+<td>Pasillo C - Estante 8</td>
+<td>30 unidades</td>
+
+<td>
+<button class="btn-solicitar">
+Solicitar Pieza
+</button>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<p id="mensaje"></p>
+
+</div>
+
+</div>
+
+
+<img src="motor-boxer.webp"
+alt="Motor"
+class="gif-repuesto">
+
+
+<footer>
+
+<p>
+© <span id="anio"></span> CarsWorld
+</p>
+
+</footer>
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded",function(){
+
+// Año automático
+document.getElementById("anio").textContent =
+new Date().getFullYear();
+
+
+// Evento botón búsqueda
+
+document.getElementById(
+"btn-ejecutar-busqueda"
+)
+.addEventListener("click",buscar);
+
+
+
+function buscar(){
+
+let vehiculo=
+document.getElementById("vehiculo")
+.value.toLowerCase();
+
+let categoria=
+document.getElementById("categoria")
+.value.toLowerCase();
+
+let texto=
+document.getElementById("busqueda-texto")
+.value.toLowerCase();
+
+
+let filas=
+document.querySelectorAll(
+".tabla-bodega tbody tr"
+);
+
+let contador=0;
+
+
+filas.forEach(function(fila){
+
+let contenido=
+fila.textContent.toLowerCase();
+
+let mostrar=true;
+
+
+// Filtro vehículo
+
+if(
+vehiculo &&
+!contenido.includes(vehiculo)
+){
+mostrar=false;
+}
+
+
+// Filtro texto
+
+if(
+texto &&
+!contenido.includes(texto)
+){
+mostrar=false;
+}
+
+
+// Categorías
+
+if(categoria){
+
+let palabras={
+
+frenos:["freno","pastilla"],
+
+motor:["motor"],
+
+suspension:["amortiguador"],
+
+filtro:["filtro","aceite"],
+
+turbo:["turbo"],
+
+llantas:["llantas"]
+
+};
+
+
+let coincide=
+palabras[categoria]?.some(
+palabra =>
+contenido.includes(palabra)
+);
+
+if(!coincide){
+
+mostrar=false;
+
+}
+
+}
+
+
+// Mostrar resultados
+
+if(mostrar){
+
+fila.style.display="";
+
+contador++;
+
+}
+
+else{
+
+fila.style.display="none";
+
+}
+
+});
+
+
+// Actualizar contador
+
+document.querySelector(
+".contador-productos"
+).textContent=
+contador+
+" repuestos encontrados";
+
+
+
+// Mensaje si no encuentra resultados
+
+let mensaje=
+document.getElementById(
+"mensaje"
+);
+
+if(contador===0){
+
+mensaje.innerHTML=
+"No se encontraron repuestos.";
+
+}
+else{
+
+mensaje.innerHTML="";
+
+}
+
+}
+
+});
+
+</script>
+
+</body>
+</html>

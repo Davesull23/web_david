@@ -1,0 +1,136 @@
+:root {
+    --text-dark: #333333;
+    --border-color: #e0e0e0;
+    --success-color: #2e7d32; /* Verde para stock disponible */
+    --warning-color: #ef6c00; /* Naranja para pocas unidades */
+    --accent-blue: #1565c0;   /* Azul para botones y detalles */
+}
+
+.contenedor-bodega {
+    max-width: 900px;
+    margin: 30px auto;
+    font-family: 'Arial', sans-serif;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.encabezado-resultados {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.encabezado-resultados h2 {
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.contador-productos {
+    background-color: #f0f0f0;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #666;
+}
+
+/* Tabla */
+.tabla-responsiva {
+    overflow-x: auto; /* Permite deslizar horizontalmente en móviles */
+}
+
+.tabla-bodega {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.tabla-bodega th {
+    background-color: #f8f9fa;
+    color: #555;
+    padding: 12px 15px;
+    font-weight: bold;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.tabla-bodega td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-dark);
+    vertical-align: middle;
+}
+
+/* Detalles específicos de celdas */
+.codigo {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: #666;
+}
+
+.celda-repuesto strong {
+    display: block;
+    color: #111;
+}
+
+.marca-repuesto {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.ubicacion {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* Estados de Stock */
+.stock {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.en-stock {
+    color: var(--success-color);
+}
+
+.bajo-stock {
+    color: var(--warning-color);
+}
+
+/* Botón de acción */
+.btn-solicitar {
+    background-color: var(--accent-blue);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-solicitar:hover {
+    background-color: #0d47a1;
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 600px) {
+    .tabla-bodega th, .tabla-bodega td {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+    .btn-solicitar {
+        padding: 6px 10px;
+    }
+}
