@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Compras</title>
@@ -17,210 +18,202 @@
 
     <div class="contenedor">
 
-<h1>Compra de Repuestos</h1>
+        <h1>Compra de Repuestos</h1>
 
-<h2>Productos Disponibles</h2>
+        <h2>Productos Disponibles</h2>
 
-<table>
+        <table>
 
-<thead>
+            <thead>
 
-<tr>
+                <tr>
 
-<th>Repuesto</th>
-<th>Precio</th>
-<th>Acción</th>
+                    <th>Repuesto</th>
+                    <th>Precio</th>
+                    <th>Acción</th>
 
-</tr>
+                </tr>
 
-</thead>
+            </thead>
 
-<tbody>
+            <tbody>
 
-<tr>
+                <tr>
 
-<td>Pastillas de Freno Delanteras</td>
-<td>$85</td>
+                    <td>Pastillas de Freno Delanteras</td>
+                    <td>$85</td>
 
-<td>
+                    <td>
 
-<button
-class="agregar"
-onclick="agregarProducto(
+                        <button class="agregar" onclick="agregarProducto(
 'Pastillas de Freno Delanteras',
 85
 )">
-Agregar
-</button>
+                            Agregar
+                        </button>
 
-</td>
+                    </td>
 
-</tr>
+                </tr>
 
-<tr>
+                <tr>
 
-<td>Llantas AT/TT</td>
-<td>$50</td>
+                    <td>Llantas AT/TT</td>
+                    <td>$50</td>
 
-<td>
+                    <td>
 
-<button
-class="agregar"
-onclick="agregarProducto(
+                        <button class="agregar" onclick="agregarProducto(
 'Llantas AT/TT',
 50
 )">
-Agregar
-</button>
+                            Agregar
+                        </button>
 
-</td>
+                    </td>
 
-</tr>
+                </tr>
 
-<tr>
+                <tr>
 
-<td>Filtro de Aceite Sintético</td>
-<td>$25</td>
+                    <td>Filtro de Aceite Sintético</td>
+                    <td>$25</td>
 
-<td>
+                    <td>
 
-<button
-class="agregar"
-onclick="agregarProducto(
+                        <button class="agregar" onclick="agregarProducto(
 'Filtro de Aceite Sintético',
 25
 )">
-Agregar
-</button>
+                            Agregar
+                        </button>
 
-</td>
+                    </td>
 
-</tr>
+                </tr>
 
-<tr>
+                <tr>
 
-<td>Amortiguadores Traseros</td>
-<td>$150</td>
+                    <td>Amortiguadores Traseros</td>
+                    <td>$150</td>
 
-<td>
+                    <td>
 
-<button
-class="agregar"
-onclick="agregarProducto(
+                        <button class="agregar" onclick="agregarProducto(
 'Amortiguadores Traseros',
 150
 )">
-Agregar
-</button>
+                            Agregar
+                        </button>
 
-</td>
+                    </td>
 
-</tr>
+                </tr>
 
-</tbody>
+            </tbody>
 
-</table>
-
-
-<h2>Carrito</h2>
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Producto</th>
-<th>Precio</th>
-<th>Cantidad</th>
-<th>Subtotal</th>
-<th>Eliminar</th>
-
-</tr>
-
-</thead>
-
-<tbody id="carrito">
-
-</tbody>
-
-</table>
+        </table>
 
 
-<div class="total">
+        <h2>Carrito</h2>
 
-Total:
-$<span id="total">0</span>
+        <table>
 
-</div>
+            <thead>
 
-<button class="comprar">
+                <tr>
 
-Finalizar Compra
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Eliminar</th>
 
-</button>
+                </tr>
 
-</div>
+            </thead>
 
+            <tbody id="carrito">
 
+            </tbody>
 
-<script>
-
-let carrito=[];
-
-
-function agregarProducto(nombre,precio){
-
-let existe=
-carrito.find(
-item=>item.nombre===nombre
-);
+        </table>
 
 
-if(existe){
+        <div class="total">
 
-existe.cantidad++;
+            Total:
+            $<span id="total">0</span>
 
-}
-else{
+        </div>
 
-carrito.push({
+        <button class="comprar">
 
-nombre:nombre,
-precio:precio,
-cantidad:1
+            Finalizar Compra
 
-});
+        </button>
 
-}
-
-actualizarCarrito();
-
-}
+    </div>
 
 
-function actualizarCarrito(){
 
-let tabla=
-document.getElementById(
-"carrito"
-);
+    <script>
 
-tabla.innerHTML="";
-
-let total=0;
+        let carrito = [];
 
 
-carrito.forEach((item,index)=>{
+        function agregarProducto(nombre, precio) {
 
-let subtotal=
-item.precio*
-item.cantidad;
+            let existe =
+                carrito.find(
+                    item => item.nombre === nombre
+                );
 
-total+=subtotal;
+
+            if (existe) {
+
+                existe.cantidad++;
+
+            }
+            else {
+
+                carrito.push({
+
+                    nombre: nombre,
+                    precio: precio,
+                    cantidad: 1
+
+                });
+
+            }
+
+            actualizarCarrito();
+
+        }
 
 
-tabla.innerHTML+=`
+        function actualizarCarrito() {
+
+            let tabla =
+                document.getElementById(
+                    "carrito"
+                );
+
+            tabla.innerHTML = "";
+
+            let total = 0;
+
+
+            carrito.forEach((item, index) => {
+
+                let subtotal =
+                    item.precio *
+                    item.cantidad;
+
+                total += subtotal;
+
+
+                tabla.innerHTML += `
 
 <tr>
 
@@ -267,45 +260,46 @@ X
 
 `;
 
-});
+            });
 
 
-document.getElementById(
-"total"
-).innerText=total;
+            document.getElementById(
+                "total"
+            ).innerText = total;
 
-}
-
-
-
-function cambiarCantidad(
-index,
-cantidad
-){
-
-carrito[index].cantidad=
-parseInt(cantidad);
-
-actualizarCarrito();
-
-}
+        }
 
 
 
-function eliminarProducto(
-index
-){
+        function cambiarCantidad(
+            index,
+            cantidad
+        ) {
 
-carrito.splice(
-index,
-1
-);
+            carrito[index].cantidad =
+                parseInt(cantidad);
 
-actualizarCarrito();
+            actualizarCarrito();
 
-}
+        }
 
-</script>
+
+
+        function eliminarProducto(
+            index
+        ) {
+
+            carrito.splice(
+                index,
+                1
+            );
+
+            actualizarCarrito();
+
+        }
+
+    </script>
 
 </body>
+
 </html>
